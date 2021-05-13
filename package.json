@@ -5,21 +5,31 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack --mode development",
-    "build": "webpack --mode production",
+    "run": "webpack --mode production",
     "start": "webpack serve --mode development --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cmzluna/recipeMe.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cmzluna/recipeMe/issues"
+  },
+  "homepage": "https://github.com/cmzluna/recipeMe#readme",
   "devDependencies": {
-    "babel-core": "^6.26.3",
+    "@babel/core": "^7.14.2",
+    "@babel/preset-env": "^7.14.2",
     "babel-loader": "^8.2.2",
-    "babel-preset-env": "^1.7.0",
     "html-webpack-plugin": "^5.3.1",
     "webpack": "^5.37.0",
+    "webpack-cli": "^4.7.0",
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
-    "webpack-cli": "^4.7.0"
+    "axios": "^0.21.1",
+    "babel-polyfill": "^6.26.0"
   }
 }

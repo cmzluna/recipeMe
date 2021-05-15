@@ -1,23 +1,22 @@
-import axios from 'axios'
+import Search from './models/Search';
+// index.js is the Controller
+//////////////// MVC model controller   https://www.sitepoint.com/mvc-design-pattern-javascript/
 
-// axios library to make AJAX requests
-async function getResults(query) {
-    const key = '0169652c09574bf5bd9bd3d9101aefec';
-/*
-    try {
-        const res = await axios(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${key}&includeNutrition=true&query=${query}&number=50`);
-        // this is going to return a promise
-        const recipes = res.data.results;
-        console.log(recipes);
-    } catch(error) {
-        alert('error');
-    }
-    */
-}
+/* Global State of the APP:
+- Search object
+- Current recipe object
+- Shopping list object
+- Liked recipes
 
-getResults('pasta');
+We have everything in one place easily accesible
+*/
 
-// API KEY
-// 0169652c09574bf5bd9bd3d9101aefec 
-// https://api.spoonacular.com/recipes/complexSearch
+const state = {}
 
+document.querySelector('.search').addEventListener('submit', e => {
+
+});
+
+const search = new Search('pizza');
+console.log(search);
+search.getResults();

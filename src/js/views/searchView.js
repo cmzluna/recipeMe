@@ -1,9 +1,15 @@
 import { elements } from './base';
-
 export const getInput = () => elements.searchInput.value;
 
-const renderRecipe = recipe => {
+export const clearInput = () => {
+    elements.searchInput.value = '';
+}
 
+export const clearResults = () => {
+    elements.searchResList.innerHTML = '';
+}
+
+const renderRecipe = recipe => {
     const markup = `
     <li>
         <a class="results__link results__link--active" href="#${recipe.id}">
@@ -12,15 +18,14 @@ const renderRecipe = recipe => {
              </figure>
              <div class="results__data">
                 <h4 class="results__name">${recipe.title}</h4>
-                 <p class="results__author">The Pioneer Woman</p>
+                 <p class="results__author">(Author blank)</p>
             </div>
         </a>
     </li> 
     `;
     elements.searchResList.insertAdjacentHTML('beforeend', markup);  // inserts in exact position one after the previous 
-
 }
 
 export const renderResults = recipes => {
     recipes.forEach(renderRecipe); // is the same as writing:    el => renderRecipe(el)
-}
+};

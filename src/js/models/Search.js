@@ -1,4 +1,5 @@
 import axios from 'axios'; 
+import {key} from '../config';
 // axios library to make AJAX requests
 // Axios works on all browsers unlike Fetch()
 // it automatically returns Jason Object 
@@ -14,7 +15,7 @@ export default class Search {
     }
 
     async getResults(query) {   // it's an async method
-        const key = '0169652c09574bf5bd9bd3d9101aefec';
+        
 
         try {
             const res = await axios(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${key}&includeNutrition=true&query=${this.query}&number=50`);

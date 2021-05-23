@@ -1,11 +1,33 @@
 import { elements } from './base';
+import { Fraction } from 'fractional';  // to convert units from 1.5 cups to 1 1/2 cups
+
+const formatCount = count => {
+    if(count) {
+        // count = 2.5 -> 2 1/2
+        // count = .5 -> 1/2
+        const [int, dec] = count.toString().split('.').map(el => parseInt(el, 10));  // separates integer and decimal parts into new array 
+        
+        if(!dec) return count;
+
+        if(int === 0 ) {
+            const fr = new Fraction(count);
+            return `${fr.numerator} / ${fr.denominator}`;
+        } else {
+            // ex : count = 2.5
+            // I want to create a fraction of .5 because 2.5 complete would return a fraction of 5/2
+            const fr = new Fraction(count - int);
+            return `${int} ${fr.numerator} / ${fr.denominator}`;
+        }
+    }
+    return '?';
+}
 
 const createIngredient = ingredient => `
                 <li class="recipe__item">
                     <svg class="recipe__icon">
                         <use href="img/icons.svg#icon-check"></use>
                     </svg>
-                    <div class="recipe__count">${ingredient.count}</div>
+                    <div class="recipe__count">${formatCount(ingredient.count)}</div>
                     <div class="recipe__ingredient">
                         <span class="recipe__unit">${ingredient.unit}</span>
                         ${ingredient.ingredient}
@@ -13,9 +35,9 @@ const createIngredient = ingredient => `
                 </li>
                 `;
 
-
-
-
+export const clearRecipe = () => {
+    elements.recipe.innerHTML = '';
+}
 
 export const renderRecipe = recipe => {
     const markup = `

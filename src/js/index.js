@@ -106,7 +106,12 @@ const controlRecipe = async (id) => {
 
     if(id) {
         // prepare UI for changes
+        recipeView.clearRecipe();
         renderLoader(elements.recipe); 
+
+        // highlight selected recipe
+        console.log(id);
+        searchView.highlightSelected(id);
 
         // create new recipe object
         state.recipe = new Recipe(id);
@@ -117,7 +122,7 @@ const controlRecipe = async (id) => {
             state.recipe.parseIngredients();
 
             // render recipe
-            clearLoader();
+            clearLoader(); 
             console.log(state.recipe);
             recipeView.renderRecipe(state.recipe);
         } catch(err) {

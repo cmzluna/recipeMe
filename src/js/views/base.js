@@ -8,7 +8,7 @@ export const elements = {
     searchRes: document.querySelector('.results'),
     searchResPages: document.querySelector('.results__pages'), 
     recipe: document.querySelector('.recipe')
-}  
+}
 
 // if I would ever change the loader name in CSS for some reason, I could change it here and it would work automatically in all the methods instead of hardcoding. This is good for reusability and maintainability.
 export const elementStrings = {

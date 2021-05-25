@@ -4,6 +4,8 @@ import * as searchView from './views/searchView'; // imports all of the function
 import * as recipeView from './views/recipeView';
 import { elements, renderLoader, clearLoader } from './views/base';
 
+
+// Added some comments to test git integration with VSCode
 // index.js is the Controller
 //////////////// MVC model controller   https://www.sitepoint.com/mvc-design-pattern-javascript/
 // we have in the controller all the eventListeners

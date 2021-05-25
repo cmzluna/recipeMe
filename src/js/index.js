@@ -128,6 +128,23 @@ const controlRecipe = async (id) => {
         } catch(err) {
             alert('Error processing recipe!');
         }
-       
     }
 }
+
+elements.recipe.addEventListener('click', e => {
+    // we have to select different elements
+    // we use matches method instead of closest 
+    // because we must test what was clicked and then act accordingly.
+
+    if(e.target.matches('.btn-decrease, .btn-decrease *')) {
+    // by using this line , it will match the 'svg' or 'use' element as well   -- any child elements
+        if(state.recipe.servings > 1) {
+            state.recipe.updateServings('dec');
+        }
+        
+    } else if (e.target.matches('.btn-increase, .btn-increase *')) {
+        state.recipe.updateServings('inc');
+    }
+    console.log(state.recipe)
+    
+});

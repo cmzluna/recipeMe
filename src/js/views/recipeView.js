@@ -63,12 +63,12 @@ export const renderRecipe = recipe => {
                 <span class="recipe__info-text"> servings</span>
 
                 <div class="recipe__info-buttons">
-                    <button class="btn-tiny">
+                    <button class="btn-tiny btn-decrease">
                         <svg>
                             <use href="img/icons.svg#icon-circle-with-minus"></use>
                         </svg>
                     </button>
-                    <button class="btn-tiny">
+                    <button class="btn-tiny btn-increase">
                         <svg>
                             <use href="img/icons.svg#icon-circle-with-plus"></use>
                         </svg>
@@ -109,6 +109,10 @@ export const renderRecipe = recipe => {
             </p>
             <a class="btn-small recipe__btn" href="http://thepioneerwoman.com/cooking/pasta-with-tomato-cream-sauce/" target="_blank">
                 <span>Directions</span>
+
+                -+
+                -+
+                -
                 <svg class="search__icon">
                     <use href="img/icons.svg#icon-triangle-right"></use>
                 </svg>
@@ -119,3 +123,5 @@ export const renderRecipe = recipe => {
 
     elements.recipe.insertAdjacentHTML('afterbegin', markup); 
 }
+
+export const upda

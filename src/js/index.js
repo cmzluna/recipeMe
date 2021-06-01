@@ -4,14 +4,11 @@ import * as searchView from './views/searchView'; // imports all of the function
 import * as recipeView from './views/recipeView';
 import { elements, renderLoader, clearLoader } from './views/base';
 
-
-// Added some comments to test git integration with VSCode
-// index.js is the Controller
 //////////////// MVC model controller   https://www.sitepoint.com/mvc-design-pattern-javascript/
-// we have in the controller all the eventListeners
-
-
-
+/* The Controller handles events and is the mediator between the view and model.
+ we have in the controller all the eventListeners
+The controller is the entry point for events and the only mediator between the view and data.
+*/
 const state = {}
 /* Global State of the APP ( We save everything in one easily accesible place ) :
 - Search object
@@ -148,5 +145,4 @@ elements.recipe.addEventListener('click', e => {
         state.recipe.updateServings('inc');
     }
     console.log(state.recipe)
-    
 });

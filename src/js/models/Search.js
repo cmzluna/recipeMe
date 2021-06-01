@@ -16,7 +16,6 @@ export default class Search {
 
     async getResults(query) {   // it's an async method
         
-
         try {
             const res = await axios(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${key}&includeNutrition=true&query=${this.query}&number=50`);
             // this is going to return a promise

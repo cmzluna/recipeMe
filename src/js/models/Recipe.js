@@ -1,6 +1,17 @@
 import axios from 'axios'; 
 import {key} from '../config';
 
+
+/*
+The Model cares about data. In client-side JavaScript, this means Ajax.
+The model in this design pattern cares only about JSON or objects that come from the server.
+
+The model, for example, must not care about HTML. The view must not care about Ajax. The controller must serve as the mediator without worrying about implementation details.
+
+CARE ABOUT EMPHASIS!
+feature concerns are not the same as functional concerns.
+
+*/
 export default class Recipe {
     // when creating a new recipe I pass in the ID
     constructor(id) {

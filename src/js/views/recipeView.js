@@ -1,6 +1,11 @@
 import { elements } from './base';
 import { Fraction } from 'fractional';  // to convert units from 1.5 cups to 1 1/2 cups
 
+
+/* In MVC, no other part cares about changing the DOM except for the view.
+The view can attach user events but leaves event handling concerns to the controller.
+The view’s prime directive is to change the state of what the user sees on the screen.
+*/
 const formatCount = count => {
     if(count) {
         // count = 2.5 -> 2 1/2
@@ -89,8 +94,6 @@ export const renderRecipe = recipe => {
             <ul class="recipe__ingredient-list">
                 ${recipe.ingredients.map(el => createIngredient(el)).join('')}
 
-                
-
             </ul>
 
             <button class="btn-small recipe__btn">
@@ -124,4 +127,7 @@ export const renderRecipe = recipe => {
     elements.recipe.insertAdjacentHTML('afterbegin', markup); 
 }
 
-export const upda
+export const updateServingsIngredients = recipe => {
+
+
+}

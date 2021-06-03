@@ -2,6 +2,8 @@ import Search from './models/Search';
 import Recipe from './models/Recipe';
 import List from './models/List';
 import * as searchView from './views/searchView'; // imports all of the functions as an object searchView
+import * as listView from './views/listView';
+
 import * as recipeView from './views/recipeView';
 import { elements, renderLoader, clearLoader } from './views/base';
 
@@ -11,6 +13,7 @@ import { elements, renderLoader, clearLoader } from './views/base';
 The controller is the entry point for events and the only mediator between the view and data.
 */
 const state = {}
+window.state = state;
 /* Global State of the APP ( We save everything in one easily accesible place ) :
 - Search object
 - Current recipe object
@@ -106,16 +109,15 @@ const controlRecipe = async (id) => {
 
     if(id) {
         // prepare UI for changes
-        recipeView.clearRecipe();
-        renderLoader(elements.recipe); 
-
+        recipeView.clearRecipe(); 
         // highlight selected recipe
         console.log(id);
         searchView.highlightSelected(id);
 
         // create new recipe object
         state.recipe = new Recipe(id);
-        
+       
+
         try {
             // get recipe and parse Ingredients
             await state.recipe.getRecipe();
@@ -129,7 +131,36 @@ const controlRecipe = async (id) => {
         }
     }
 }
- 
+
+/* ///////////// LIST CONTROLLER
+*/ /////////////////////////////////
+const controlList = () => {
+    // create a new list if there is none yet
+    if(!state.list) state.list = new List(); 
+
+    // add each ingredient to the List and UI
+    state.recipe.ingredients.forEach(el => {
+        const item = state.list.addItem(el.count, el.unit, el.ingredient);
+        listView.renderItem(item);
+    })
+}
+
+// handle delete and update list items events
+elements.shopping.addEventListener('click', e => {
+    const id = e.target.closest('.shopping__item').dataset.itemid;
+    // handle delete button
+    if (e.target.matches('.shopping__delete, .shopping__delete *')) {
+        //delete from state
+        state.list.deleteItem(id);
+        //delete from UI
+        listView.deleteItem(id);
+    } else if (e.target.matches('.shopping__count-value')) {
+        const val = parseFloat(e.target.value, 10) ;    // I need to get the value of the elemnt that's been clicked 
+        
+        state.list.updateCount(id, val);
+    }
+})
+
 elements.recipe.addEventListener('click', e => {
     // we have to select different elements
     // we use matches method instead of closest 
@@ -144,7 +175,11 @@ elements.recipe.addEventListener('click', e => {
     } else if (e.target.matches('.btn-increase, .btn-increase *')) {
         state.recipe.updateServings('inc');
         recipeView.updateServingsIngredients(state.recipe);
+    } else if (e.target.matches('.recipe__btn--add, .recipe__btn--add *')) {
+        controlList();
     }
 });
 
 window.l = new List();
+
+

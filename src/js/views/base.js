@@ -10,6 +10,7 @@ export const elements = {
   recipe: document.querySelector(".recipe"),
   shopping: document.querySelector(".shopping__list"),
   likes: document.querySelector(".likes__list"),
+  likesMenu: document.querySelector(".likes__field"),
 };
 
 // if I would ever change the loader name in CSS for some reason, I could change it here and it would work automatically in all the methods instead of hardcoding. This is good for reusability and maintainability.
